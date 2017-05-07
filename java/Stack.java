@@ -42,18 +42,18 @@ public class Stack<E> {
         System.out.println(elements[top]);
     }
 
-//    public static void main(String[] args){
-//        Stack newStack = new Stack(10);
-//        newStack.push(5);
-//        newStack.isFull();
-//        newStack.push(7);
-//        newStack.isFull();
-//        newStack.push(12);
-//        newStack.isFull();
-//        newStack.pop();
-//        newStack.isEmpty();
-//        newStack.pop();
-//        newStack.isEmpty();
-//    }
+    public static void main(String[] args){
+        Stack newStack = new Stack(10);
+        newStack.push(5);
+        newStack.isFull();
+        newStack.push(7);
+        newStack.isFull();
+        newStack.push(12);
+        newStack.isFull();
+        newStack.pop();
+        newStack.isEmpty();
+        newStack.pop();
+        newStack.isEmpty();
+    }
 
 }
