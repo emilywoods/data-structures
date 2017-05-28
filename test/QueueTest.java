@@ -18,34 +18,26 @@ public class QueueTest {
 
     @Test
     public void isEmpty_whenQueueIsEmpty_ThenReturnsTrue() {
-        boolean result = queue.isEmpty();
-
-        assertThat(result, is(true));
+        assertThat(queue.isEmpty(), is(true));
     }
 
     @Test
     public void isEmpty_whenQueueIsNotEmpty_ThenReturnsFalse() {
         queue.enqueue(1);
 
-        boolean result = queue.isEmpty();
-
-        assertThat(result, is(false));
+        assertThat(queue.isEmpty(), is(false));
     }
 
     @Test
     public void isFull_whenFull_thenReturnsTrue() {
         givenQueueIsFull();
 
-        boolean result = queue.isFull();
-
-        assertThat(result, is(true));
+        assertThat(queue.isFull(), is(true));
     }
 
     @Test
     public void isFull_whenNotFull_thenReturnsFalse() {
-        boolean result = queue.isFull();
-
-        assertThat(result, is(false));
+        assertThat(queue.isFull(), is(false));
     }
 
     private void givenQueueIsFull() {
@@ -55,14 +47,14 @@ public class QueueTest {
     }
 
     @Test
-    public void enqueue_whenItemIsEnqueuedToEmptyQueue_thenItemAddedToTopOfQueue() {
+    public void enqueue_whenItemIsEnqueuedToEmptyQueue_thenItemAddedToEndOfQueue() {
         queue.enqueue(3);
 
         assertThat(queue.elements[0], is(3));
     }
 
     @Test
-    public void enqueue_whenItemIsEnqueuedToNonEmptyQueue_thenItemAddedToTopOfQueue() {
+    public void enqueue_whenItemIsEnqueuedToNonEmptyQueue_thenItemAddedToEndOfQueue() {
         givenQueueHasTwoElementsInQueue();
 
         queue.enqueue(3);
