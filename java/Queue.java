@@ -5,9 +5,7 @@ public class Queue<E> {
     private int size;
     private int top;
     private int first;
-    private E[] elements;
-
-    //enqueue, dequeue, empty, full;
+    public E[] elements;
 
     public Queue(int s){
         first = 0;
@@ -22,12 +20,10 @@ public class Queue<E> {
     }
 
     public boolean isEmpty(){
-        System.out.println(top == -1);
         return top == -1;
     }
 
     public boolean isFull(){
-        System.out.println(top == size - 1);
         return top == size - 1;
     }
 
@@ -36,7 +32,6 @@ public class Queue<E> {
             throw new FullQueue();
         }
         elements[++top] = element;
-        System.out.println(elements[top]);
     }
 
     public void dequeue(){
@@ -44,16 +39,6 @@ public class Queue<E> {
             throw new EmptyQueue();
         }
         elements[first] = elements[first + 1];
-        System.out.println(elements[first]);
-    }
-
-    public static void main(String[] arg){
-        Queue newQueue = new Queue(10);
-        newQueue.enqueue(8);
-        newQueue.enqueue(1);
-        newQueue.enqueue(5);
-        newQueue.isEmpty();
-        newQueue.isFull();
-        newQueue.dequeue();
+        elements[first + 1] = null;
     }
 }
