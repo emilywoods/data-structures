@@ -1,10 +1,12 @@
+import java.util.List;
+
 public class LinkedList<E> {
 
-    private int size;
-    private Node<E> listHead;
+    public int size;
+    public Node<E> head;
 
     public Node<E> searchWithValue(E value){
-        Node<E> currentNode = listHead;
+        Node<E> currentNode = head;
         while (currentNode != null && currentNode.element != value) {
             currentNode = currentNode.next;
         }
@@ -13,21 +15,21 @@ public class LinkedList<E> {
 
     public void insertElementAtHead(E value){
         Node<E> newNode = new Node<> (value);
-        if (listHead != null) {
-            newNode.next = listHead;
+        if (head != null) {
+            newNode.next = head;
         }
-        listHead = newNode;
+        head = newNode;
         size ++;
     }
 
     public void insertElementAtTail(E value) {
         Node<E> newNode = new Node<> (value);
 
-        if (listHead == null) {
-            listHead = newNode;
+        if (head == null) {
+            head = newNode;
         }
 
-        Node<E> temporaryNode = listHead;
+        Node<E> temporaryNode = head;
         while(temporaryNode.next != null) {
             temporaryNode = temporaryNode.next;
         }
@@ -40,11 +42,11 @@ public class LinkedList<E> {
             throw new IllegalArgumentException();
         }
 
-        if (listHead == null) {
+        if (head == null) {
             return;
         }
 
-        Node<E> currentNode = listHead;
+        Node<E> currentNode = head;
 
         for (int i = 0; i < index; i++ ) {
             currentNode = currentNode.next;
@@ -60,28 +62,26 @@ public class LinkedList<E> {
     }
 
     private void deleteTailElement() {
-        if (listHead == null) {
+        if (head == null) {
             return;
         }
 
-        Node<E> currentNode = listHead;
+        Node<E> currentNode = head;
         while (currentNode.next.next != null) {
             currentNode = currentNode.next;
         }
 
         currentNode.next = null;
         size --;
-
     }
 
-    private void deleteHeadElement() {
-        if (listHead == null) {
+    public void deleteHeadElement() {
+        if (head == null) {
             return;
         }
 
-        listHead = listHead.next;
+        head = head.next;
         size --;
-
     }
 
     public int size(){
@@ -89,44 +89,26 @@ public class LinkedList<E> {
     }
 
     public void traverseList(){
-        if (listHead == null) {
+        if (head == null) {
             return;
         }
-        System.out.println(listHead.element);
+        System.out.println(head.element);
 
-        Node<E> currentNode = listHead;
+        Node<E> currentNode = head;
         while (currentNode.next != null && currentNode.next.next != null) {
             System.out.println(currentNode.next.element);
             currentNode = currentNode.next;
         }
-
     }
 
-    private class Node<T> {
+    public class Node<T> {
         Node<T> next;
         T element;
 
         public Node(T element){
             this.element = element;
         }
-    }
 
-    public static void main(String[] args) {
-        LinkedList list = new LinkedList();
-        System.out.print(list.size);
-        list.insertElementAtHead(2);
-        System.out.println(list.listHead.element);
-        list.deleteNode(0);
-        list.insertElementAtHead(50);
-        list.insertElementAtTail(25);
-        list.insertElementAtHead(1);
-        list.insertElementAtHead(9);
-        System.out.print(list.size);
-        list.deleteHeadElement();
-        list.deleteTailElement();
-        list.traverseList();
-        list.deleteNode(1);
-        list.traverseList();
     }
 
 }
